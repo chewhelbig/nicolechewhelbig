@@ -1,16 +1,16 @@
 :root {
-    --cream: #FAF8F5;
+    --cream: #FDFCFB;
     --warm-white: #FFFFFF;
-    --sand: #F0EBE3;
-    --blush: #EEDAD0;
-    --blush-pink: #F2D4CE;
+    --sand: #F7F4F0;
+    --blush: #F3E5DC;
+    --blush-pink: #F5DDD7;
     --dusty-rose: #C4A08A;
     --terracotta: #B07D62;
     --deep-clay: #8B5E3C;
     --charcoal: #2C2C2C;
     --soft-black: #1A1A1A;
     --muted: #6B6560;
-    --light-border: #E5DDD5;
+    --light-border: #EBE6E0;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
