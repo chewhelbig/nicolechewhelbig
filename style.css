@@ -4,12 +4,12 @@
     --sand: #F7F4F0;
     --blush: #F3E5DC;
     --blush-pink: #F5DDD7;
-    --dusty-rose: #C4A08A;
-    --terracotta: #B07D62;
+    --dusty-rose: #9E8272;
+    --terracotta: #8E6A50;
     --deep-clay: #8B5E3C;
     --charcoal: #2C2C2C;
     --soft-black: #1A1A1A;
-    --muted: #4D4843;
+    --body-text: #3A3632;
     --light-border: #EBE6E0;
   }
 
@@ -21,7 +21,7 @@
     font-weight: 400;
     color: var(--charcoal);
     background: var(--cream);
-    line-height: 1.75;
+    line-height: 1.78;
     font-size: 17px;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
@@ -44,7 +44,7 @@
   /* ── NAV ── */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(250,248,245,0.92);
+    background: rgba(253,252,251,0.94);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(229,221,213,0.5);
@@ -57,13 +57,13 @@
   }
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 500; font-size: 1.05rem;
+    font-weight: 600; font-size: 1.1rem;
     letter-spacing: 0.06em; color: var(--soft-black); text-decoration: none;
   }
   .nav-links { display: flex; gap: 2.2rem; list-style: none; }
   .nav-links a {
-    font-size: 0.8rem; font-weight: 400; letter-spacing: 0.05em;
-    color: var(--muted); text-decoration: none; transition: color 0.3s;
+    font-size: 0.85rem; font-weight: 400; letter-spacing: 0.04em;
+    color: var(--body-text); text-decoration: none; transition: color 0.3s;
   }
   .nav-links a:hover { color: var(--soft-black); }
   .hamburger {
@@ -88,15 +88,15 @@
   }
   .hero h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 300; font-size: 3.4rem; line-height: 1.12;
+    font-weight: 500; font-size: 3.4rem; line-height: 1.12;
     color: var(--soft-black); margin-bottom: 1.6rem;
     letter-spacing: -0.015em;
     opacity: 0; animation: fadeUp 1s ease 0.15s forwards;
   }
   .hero .tagline {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 400; font-style: italic; font-size: 1.2rem;
-    color: var(--muted); line-height: 1.65;
+    font-weight: 500; font-style: italic; font-size: 1.25rem;
+    color: var(--body-text); line-height: 1.65;
     max-width: 520px; margin: 0 auto 2.8rem;
     opacity: 0; animation: fadeUp 1s ease 0.35s forwards;
   }
@@ -109,7 +109,7 @@
   .btn {
     display: inline-block; padding: 0.7rem 1.9rem;
     font-family: 'Libre Franklin', sans-serif;
-    font-size: 0.8rem; font-weight: 400; letter-spacing: 0.07em;
+    font-size: 0.85rem; font-weight: 400; letter-spacing: 0.06em;
     text-decoration: none; border-radius: 1px;
     transition: all 0.35s ease; cursor: pointer;
   }
@@ -123,9 +123,9 @@
     border: 1px solid var(--charcoal);
   }
   .btn-outline:hover { background: var(--soft-black); color: var(--cream); }
-  .btn-sm { padding: 0.55rem 1.4rem; font-size: 0.78rem; }
+  .btn-sm { padding: 0.55rem 1.4rem; font-size: 0.82rem; }
 
-  .line { width: 50px; height: 1px; background: var(--dusty-rose); margin: 0 auto; opacity: 0.6; }
+  .line { width: 50px; height: 1px; background: var(--dusty-rose); margin: 0 auto; opacity: 0.7; }
 
   /* ── BOOKS ── */
   .books {
@@ -139,7 +139,7 @@
   .books-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
   .section-title {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 400; font-style: italic; font-size: 1.9rem;
+    font-weight: 500; font-style: italic; font-size: 1.9rem;
     text-align: center; color: var(--soft-black); margin-bottom: 3.5rem;
   }
   .books-grid {
@@ -166,59 +166,18 @@
     z-index: 10000;
   }
 
-  /* Routledge cover styled */
-  .cover-routledge {
-    width: 210px; height: 336px; border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 12px 40px rgba(0,0,0,0.08);
-    background: linear-gradient(175deg, #F5EDE6 0%, #E2D4C4 25%, #C9A88E 50%, #8B7B6B 72%, #5C6B58 88%, #3E524A 100%);
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; padding: 1.8rem 1.2rem;
-    position: relative; overflow: hidden;
-  }
-  .cover-routledge::before {
-    content: ''; position: absolute;
-    bottom: 0; left: -10%; width: 120%; height: 55%;
-    background:
-      linear-gradient(135deg, transparent 30%, rgba(139,123,107,0.6) 30%, rgba(139,123,107,0.6) 50%, transparent 50%),
-      linear-gradient(160deg, transparent 40%, rgba(92,107,88,0.5) 40%, rgba(92,107,88,0.5) 60%, transparent 60%);
-    opacity: 0.3;
-  }
-  .cover-routledge .cv-pub {
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 0.48rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(44,44,44,0.4); margin-bottom: 0.6rem; z-index: 1;
-  }
-  .cover-routledge .cv-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600; font-size: 1.25rem; line-height: 1.2;
-    color: var(--soft-black); text-align: center;
-    margin-bottom: 0.4rem; z-index: 1;
-  }
-  .cover-routledge .cv-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300; font-style: italic; font-size: 0.72rem;
-    color: rgba(44,44,44,0.55); text-align: center;
-    margin-bottom: auto; z-index: 1;
-  }
-  .cover-routledge .cv-author {
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(250,248,245,0.75);
-    margin-top: auto; padding-top: 1.5rem; z-index: 1;
-  }
-
   .book-title {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 500; font-size: 1.3rem;
+    font-weight: 600; font-size: 1.3rem;
     color: var(--soft-black); margin-bottom: 0.6rem;
   }
   .book-desc {
-    font-size: 0.95rem; color: var(--muted);
-    line-height: 1.7; max-width: 350px; margin: 0 auto 1.5rem;
+    font-size: 0.95rem; color: var(--body-text);
+    line-height: 1.75; max-width: 350px; margin: 0 auto 1.5rem;
   }
   .book-buttons { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
   .placeholder-note {
-    font-size: 0.7rem; color: var(--dusty-rose); font-style: italic;
+    font-size: 0.75rem; color: var(--dusty-rose); font-style: italic;
     text-align: center; margin-top: 0.5rem;
   }
 
@@ -232,14 +191,14 @@
   }
   .quote-band blockquote {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 400; font-style: italic; font-size: 1.55rem;
+    font-weight: 500; font-style: italic; font-size: 1.55rem;
     color: var(--soft-black); max-width: 640px;
     margin: 0 auto; line-height: 1.6;
   }
   .q-attr {
     font-family: 'Libre Franklin', sans-serif;
-    font-size: 0.75rem; color: var(--dusty-rose);
-    margin-top: 1.2rem; letter-spacing: 0.05em;
+    font-size: 0.85rem; color: var(--body-text);
+    margin-top: 1.2rem; letter-spacing: 0.04em;
   }
 
   /* ── THE WORK ── */
@@ -253,16 +212,16 @@
   .work-item:last-child { border-bottom: none; }
   .work-label {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 500; font-style: italic; font-size: 1.05rem;
+    font-weight: 600; font-style: italic; font-size: 1.1rem;
     color: var(--terracotta); padding-top: 0.15rem;
   }
   .work-text h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 500; font-size: 1.2rem;
+    font-weight: 600; font-size: 1.2rem;
     color: var(--soft-black); margin-bottom: 0.5rem;
   }
   .work-text p {
-    font-size: 0.95rem; color: var(--muted); line-height: 1.7;
+    font-size: 0.95rem; color: var(--body-text); line-height: 1.78;
   }
 
   /* ── ABOUT ── */
@@ -285,22 +244,22 @@
     background: linear-gradient(160deg, var(--sand) 0%, var(--blush) 100%);
     display: flex; align-items: center; justify-content: center;
     font-family: 'Cormorant Garamond', serif; font-style: italic;
-    color: var(--dusty-rose); font-size: 0.82rem; text-align: center;
-    padding: 1rem; border: 1px dashed rgba(196,160,138,0.5);
+    color: var(--dusty-rose); font-size: 0.88rem; text-align: center;
+    padding: 1rem; border: 1px dashed rgba(158,130,114,0.4);
     position: relative;
   }
   .about-photo-placeholder::after {
     content: ''; position: absolute;
     bottom: -10px; right: -10px; width: 100%; height: 100%;
-    border: 1px solid rgba(196,160,138,0.2); border-radius: 2px; z-index: -1;
+    border: 1px solid rgba(158,130,114,0.2); border-radius: 2px; z-index: -1;
   }
   .about-text h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 400; font-style: italic; font-size: 1.9rem;
+    font-weight: 500; font-style: italic; font-size: 1.9rem;
     color: var(--soft-black); margin-bottom: 1.5rem;
   }
   .about-text p {
-    font-size: 0.95rem; color: var(--muted);
+    font-size: 0.95rem; color: var(--body-text);
     margin-bottom: 1rem; line-height: 1.8;
   }
   .about-text em { color: var(--charcoal); }
@@ -308,8 +267,9 @@
     margin-top: 1.5rem; display: flex; gap: 1.5rem; flex-wrap: wrap;
   }
   .about-links a {
-    font-size: 0.82rem; color: var(--terracotta); text-decoration: none;
+    font-size: 0.88rem; color: var(--terracotta); text-decoration: none;
     border-bottom: 1px solid transparent; transition: border-color 0.3s;
+    font-weight: 400;
   }
   .about-links a:hover { border-bottom-color: var(--terracotta); }
 
@@ -322,7 +282,7 @@
   }
   .quote-band-alt blockquote {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 300; font-style: italic; font-size: 1.2rem;
+    font-weight: 500; font-style: italic; font-size: 1.3rem;
     color: var(--charcoal); max-width: 580px; margin: 0 auto; line-height: 1.7;
   }
 
@@ -333,11 +293,11 @@
   .practice-inner { max-width: 600px; margin: 0 auto; }
   .practice-inner h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 400; font-style: italic; font-size: 1.9rem;
+    font-weight: 500; font-style: italic; font-size: 1.9rem;
     color: var(--soft-black); margin-bottom: 1.3rem;
   }
   .practice-inner p {
-    font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem;
+    font-size: 0.95rem; color: var(--body-text); line-height: 1.8; margin-bottom: 1rem;
   }
   .practice-inner .btn { margin-top: 0.8rem; }
 
@@ -349,29 +309,29 @@
   .newsletter-inner { max-width: 460px; margin: 0 auto; text-align: center; }
   .newsletter-inner h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 400; font-style: italic; font-size: 1.5rem;
+    font-weight: 500; font-style: italic; font-size: 1.5rem;
     color: var(--soft-black); margin-bottom: 0.7rem;
   }
   .newsletter-inner p {
-    font-size: 0.9rem; color: var(--muted);
-    margin-bottom: 1.5rem; line-height: 1.65;
+    font-size: 0.92rem; color: var(--body-text);
+    margin-bottom: 1.5rem; line-height: 1.7;
   }
   .nl-form { display: flex; gap: 0; max-width: 400px; margin: 0 auto; }
   .nl-form input {
     flex: 1; padding: 0.68rem 1rem;
     border: 1px solid var(--light-border); border-right: none;
     border-radius: 1px 0 0 1px;
-    font-family: 'Libre Franklin', sans-serif; font-size: 0.88rem; font-weight: 400;
+    font-family: 'Libre Franklin', sans-serif; font-size: 0.9rem; font-weight: 400;
     background: var(--warm-white); color: var(--charcoal);
     outline: none; transition: border-color 0.3s;
   }
   .nl-form input:focus { border-color: var(--dusty-rose); }
-  .nl-form input::placeholder { color: #B5AFA8; }
+  .nl-form input::placeholder { color: #A09890; }
   .nl-form button {
     padding: 0.68rem 1.3rem;
     background: var(--soft-black); color: var(--cream);
     border: 1px solid var(--soft-black); border-radius: 0 1px 1px 0;
-    font-family: 'Libre Franklin', sans-serif; font-size: 0.78rem;
+    font-family: 'Libre Franklin', sans-serif; font-size: 0.85rem;
     font-weight: 400; letter-spacing: 0.06em;
     cursor: pointer; transition: all 0.3s; white-space: nowrap;
   }
@@ -384,10 +344,10 @@
     margin-bottom: 1rem; flex-wrap: wrap;
   }
   .footer-links a {
-    font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.3s;
+    font-size: 0.85rem; color: var(--body-text); text-decoration: none; transition: color 0.3s;
   }
   .footer-links a:hover { color: var(--soft-black); }
-  .footer-copy { font-size: 0.7rem; color: var(--dusty-rose); letter-spacing: 0.04em; }
+  .footer-copy { font-size: 0.78rem; color: var(--dusty-rose); letter-spacing: 0.04em; }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
@@ -406,7 +366,7 @@
     .nav-links {
       display: none; position: absolute;
       top: 56px; left: 0; right: 0;
-      background: rgba(250,248,245,0.98);
+      background: rgba(253,252,251,0.98);
       backdrop-filter: blur(16px);
       flex-direction: column; padding: 1.5rem 2.5rem;
       border-bottom: 1px solid var(--light-border); gap: 1rem;
@@ -429,5 +389,4 @@
   @media (max-width: 480px) {
     .hero h1 { font-size: 2rem; }
     .book-cover-frame img { width: 180px; }
-    .cover-routledge { width: 180px; height: 288px; }
   }
