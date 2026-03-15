@@ -230,12 +230,15 @@
     line-height: 1.6;
   }
 
-  /* Infographics grid */
-  .infographics-grid {
+  /* Infographics — two vertical side by side, then full-width landscape */
+  .infographics-pair {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
     margin-top: 2.5rem;
+  }
+  .infographic-wide {
+    margin-top: 2rem;
   }
   .infographic-card {
     border: 1px solid var(--light-border);
@@ -248,26 +251,21 @@
     border-color: var(--dusty-rose);
     box-shadow: 0 4px 16px rgba(0,0,0,0.04);
   }
-  .infographic-placeholder {
+  .infographic-card a {
+    display: block;
+    line-height: 0;
+  }
+  .infographic-card img {
     width: 100%;
-    aspect-ratio: 4/5;
-    background: linear-gradient(160deg, var(--sand) 0%, rgba(238,218,208,0.4) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 0.8rem;
-    color: var(--dusty-rose);
-    text-align: center;
-    padding: 1rem;
-    border: 1px dashed rgba(196,160,138,0.3);
-    border-left: none;
-    border-right: none;
-    border-top: none;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s;
+  }
+  .infographic-card a:hover img {
+    opacity: 0.92;
   }
   .infographic-card .media-info {
-    padding: 1rem 1.1rem;
+    padding: 1rem 1.3rem 1.2rem;
   }
 
   /* ── "From the book" connection to Shame Paradox ── */
@@ -319,7 +317,7 @@
     .book-hero-text h1 { font-size: 1.9rem; }
 
     .media-grid { grid-template-columns: 1fr; }
-    .infographics-grid { grid-template-columns: 1fr 1fr; }
+    .infographics-pair { grid-template-columns: 1fr; }
 
     .chapter-list li {
       grid-template-columns: 36px 1fr;
@@ -327,7 +325,6 @@
     }
   }
   @media (max-width: 480px) {
-    .infographics-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -509,31 +506,43 @@
     <h2 class="section-title">Key Ideas at a Glance</h2>
     <p style="text-align:center; font-size:0.9rem; color:var(--muted); max-width:520px; margin:0 auto;">Visual summaries of core concepts from the book — designed for therapists, students, and anyone navigating the complexities of relationship.</p>
 
-    <div class="infographics-grid">
+    <!-- Two vertical infographics side by side -->
+    <div class="infographics-pair">
       <div class="infographic-card reveal">
-        <div class="infographic-placeholder">Infographic<br>to be added</div>
+        <a href="connectioncycle.png" target="_blank">
+          <img src="connectioncycle.png" alt="The Rhythm of Connection: Navigating the Contact Cycle in Couples Therapy — five phases of the connection wave, clinical observations of stuckness, and therapeutic interventions to restore flow" loading="lazy" />
+        </a>
         <div class="media-info">
           <div class="media-type">Infographic</div>
-          <div class="media-title">The Contact Boundary</div>
+          <div class="media-title">The Rhythm of Connection</div>
+          <div class="media-desc">The five phases of the contact cycle — withdrawal, contact, intimacy, confluence, and isolation — and how couples get stuck between them. Includes clinical case examples and therapeutic interventions to restore flow.</div>
         </div>
       </div>
       <div class="infographic-card reveal">
-        <div class="infographic-placeholder">Infographic<br>to be added</div>
+        <a href="fieldtheory.png" target="_blank">
+          <img src="fieldtheory.png" alt="The Relational Field: Understanding Gestalt Field Theory in Couples Therapy — Parlett's five organising principles, the therapist's embodied experience as diagnostic tool, and clinical case study" loading="lazy" />
+        </a>
         <div class="media-info">
           <div class="media-type">Infographic</div>
-          <div class="media-title">Parlett's Five Principles</div>
-        </div>
-      </div>
-      <div class="infographic-card reveal">
-        <div class="infographic-placeholder">Infographic<br>to be added</div>
-        <div class="media-info">
-          <div class="media-type">Infographic</div>
-          <div class="media-title">Creative Indifference</div>
+          <div class="media-title">The Relational Field</div>
+          <div class="media-desc">Parlett's five organising principles applied to couples work — organisation, contemporaneity, singularity, changing process, and possible relevance — alongside the therapist's embodied experience as a diagnostic tool.</div>
         </div>
       </div>
     </div>
 
-    <p class="placeholder-note" style="margin-top: 1rem;">Replace placeholders with infographic images as they're generated</p>
+    <!-- Full-width landscape infographic -->
+    <div class="infographic-wide reveal">
+      <div class="infographic-card">
+        <a href="experiments.png" target="_blank">
+          <img src="experiments.png" alt="The Dance of Difference: Transforming Couples Through Gestalt Experiments — the safe emergency, figure sharpening, embodied wisdom, the paradoxical theory of change, and specific experiments including role reversal, object exchange, and empty chair" loading="lazy" />
+        </a>
+        <div class="media-info">
+          <div class="media-type">Infographic</div>
+          <div class="media-title">Transforming Couples Through Gestalt Experiments</div>
+          <div class="media-desc">From talk to action: how Gestalt experiments — role reversal, object exchange, and the empty chair — move couples beyond intellectualisation and into embodied contact, where genuine transformation becomes possible.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
