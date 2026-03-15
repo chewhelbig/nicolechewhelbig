@@ -196,31 +196,13 @@
   .media-card .media-embed {
     width: 100%;
     aspect-ratio: 16/9;
-    background: linear-gradient(135deg, var(--sand) 0%, var(--blush) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 0.85rem;
-    color: var(--dusty-rose);
-    text-align: center;
-    padding: 1rem;
     position: relative;
-    border: 1px dashed rgba(196,160,138,0.4);
-    border-left: none;
-    border-right: none;
-    border-top: none;
   }
-  /* Play icon */
-  .media-embed::before {
-    content: '▶';
-    position: absolute;
-    font-size: 1.8rem;
-    color: rgba(196,160,138,0.35);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .media-card .media-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
   }
   .media-card .media-info {
     padding: 1.2rem 1.3rem;
@@ -476,51 +458,48 @@
     <div class="media-grid">
       <div class="media-card reveal">
         <div class="media-embed">
-          <!-- Replace with: <iframe> or <video> embed -->
-          Video embed
+          <iframe src="https://www.youtube.com/embed/QzdUvs4a7zs" title="Why 'Two Becoming One' Destroys Intimacy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="media-info">
           <div class="media-type">Podcast Episode</div>
-          <div class="media-title">The Contact Boundary: Where Love Actually Happens</div>
-          <div class="media-desc">What Gestalt therapy reveals about the space between two people — and why that space is where healing lives.</div>
+          <div class="media-title">Why "Two Becoming One" Destroys Intimacy</div>
+          <div class="media-desc">The romantic ideal of merging with another person may be the very thing that kills real connection — and what Gestalt therapy offers instead.</div>
         </div>
       </div>
 
       <div class="media-card reveal">
         <div class="media-embed">
-          Video embed
+          <iframe src="https://www.youtube.com/embed/0B8z2v7POcc" title="The Metaphor That Changes How We View Connection" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="media-info">
           <div class="media-type">Podcast Episode</div>
-          <div class="media-title">Creative Indifference in Practice</div>
-          <div class="media-desc">How holding both sides without taking either creates the conditions for something entirely new to emerge in couples work.</div>
+          <div class="media-title">The Metaphor That Changes How We View Connection</div>
+          <div class="media-desc">A single image from the book that reframes what it means to be in relationship — and why the space between two people is where love actually lives.</div>
         </div>
       </div>
 
       <div class="media-card reveal">
         <div class="media-embed">
-          Video embed
+          <iframe src="https://www.youtube.com/embed/gULgm2ia8JY" title="Why Trying to Change Your Partner Always Backfires" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="media-info">
           <div class="media-type">Podcast Episode</div>
-          <div class="media-title">Why Difference Is Not the Problem</div>
-          <div class="media-desc">The paradox at the heart of intimacy: the tension between autonomy and togetherness is not something to resolve. It's something to dance with.</div>
+          <div class="media-title">Why Trying to Change Your Partner Always Backfires</div>
+          <div class="media-desc">The paradox of change in couples therapy: transformation only happens when we stop demanding it — and start meeting the other person where they are.</div>
         </div>
       </div>
 
       <div class="media-card reveal">
         <div class="media-embed">
-          Video embed
+          <iframe src="https://www.youtube.com/embed/2yWCKaIjKdc" title="Stop Talking. Start Rolling the Ball." allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="media-info">
           <div class="media-type">Podcast Episode</div>
-          <div class="media-title">Field Theory and the Couple</div>
-          <div class="media-desc">How cultural fields, family histories, and the therapist's own presence shape what happens between two people in a room.</div>
+          <div class="media-title">Stop Talking. Start Rolling the Ball.</div>
+          <div class="media-desc">When words become weapons or walls, sometimes the most powerful intervention is the simplest one — moving out of language and into embodied contact.</div>
         </div>
       </div>
     </div>
-
-    <p class="placeholder-note" style="margin-top: 1rem;">Replace placeholder embeds with YouTube/Vimeo iframes or video files as they're produced</p>
   </div>
 </section>
 
