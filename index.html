@@ -10,42 +10,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-  /* Forthcoming overlay on Shame Paradox cover */
-  .book-cover-forthcoming {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    border-radius: 2px;
-  }
-  .book-cover-forthcoming img {
-    display: block;
-  }
-  .forthcoming-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(58,54,50,0.92) 0%, rgba(58,54,50,0.75) 55%, rgba(58,54,50,0) 100%);
-    padding: 2.8rem 1.2rem 1.1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
-    z-index: 2;
-  }
-  .forthcoming-label {
+  .book-status-note {
     font-family: 'Libre Franklin', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #F5EDE6;
-  }
-  .forthcoming-detail {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.95rem;
+    font-size: 0.82rem;
+    color: #B8453A;
+    margin-top: 0.5rem;
     font-style: italic;
-    color: #E8D5C8;
   }
 </style>
 </head>
@@ -96,13 +66,10 @@
       </div>
 
       <div class="book-card reveal">
-        <div class="book-cover-frame book-cover-forthcoming">
+        <div class="book-cover-frame">
           <img src="shame-paradox-cover.jpg" alt="The Shame Paradox — book cover by Nicole Chew-Helbig" />
-          <div class="forthcoming-overlay">
-            <span class="forthcoming-label">Forthcoming</span>
-            <span class="forthcoming-detail">Manuscript in editing</span>
-          </div>
         </div>
+        <p class="book-status-note">Manuscript editing in progress!</p>
         <h3 class="book-title">The Shame Paradox</h3>
         <p class="book-desc">Through neuroscience, a startling reinterpretation of Genesis, and three clinical stories that stay with you long after reading, this book traces shame from infant neurobiology to its place in consciousness itself — arguing that the emotion we spend our lives fleeing is the one that makes us irreplaceably human.</p>
         <div class="book-buttons">
