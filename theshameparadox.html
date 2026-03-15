@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Shame Paradox — Nicole Chew-Helbig</title>
+<meta name="description" content="The Shame Paradox traces shame from infant neurobiology to consciousness itself — arguing that the emotion we spend our lives fleeing is the one that makes us irreplaceably human.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ── Shame Paradox page-specific styles ── */
+
+  .sp-hero {
+    padding: 7rem 2rem 3.5rem;
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .sp-hero .back-link {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: #8C7A6B;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 2.5rem;
+    transition: color 0.2s;
+  }
+  .sp-hero .back-link:hover { color: #3A3632; }
+
+  .sp-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    color: #3A3632;
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+  }
+  .sp-hero .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    color: #8C7A6B;
+    margin-bottom: 2rem;
+  }
+  .sp-hero .forthcoming-badge {
+    display: inline-block;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #B8705A;
+    border: 1px solid #B8705A;
+    padding: 0.35em 1.2em;
+    border-radius: 2px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── Book intro with cover ── */
+  .sp-intro {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .sp-intro .sp-cover {
+    width: 100%;
+    border-radius: 2px;
+    box-shadow: 0 8px 30px rgba(60,50,40,0.12), 0 2px 8px rgba(60,50,40,0.08);
+  }
+  .sp-intro .sp-text p {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.06rem;
+    line-height: 1.75;
+    color: #3A3632;
+    margin-bottom: 1.2rem;
+  }
+  .sp-intro .sp-text p:last-child { margin-bottom: 0; }
+  .sp-publisher {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    color: #8C7A6B;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── Quote band ── */
+  .sp-quote {
+    background: #F5EDE6;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .sp-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    font-weight: 400;
+    font-style: italic;
+    color: #3A3632;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* ── What the book explores ── */
+  .sp-explores {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+  .sp-explores h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: #3A3632;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .sp-explores p {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.06rem;
+    line-height: 1.75;
+    color: #3A3632;
+    margin-bottom: 1.2rem;
+  }
+  .sp-themes {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2.5rem;
+  }
+  .sp-theme-item {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.95rem;
+    color: #5A4F48;
+    line-height: 1.6;
+    padding-left: 1.2rem;
+    border-left: 2px solid #D4B5A0;
+  }
+
+  /* ── Journey / Timeline ── */
+  .sp-journey {
+    background: #FAF6F2;
+    padding: 4.5rem 2rem;
+  }
+  .sp-journey h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: #3A3632;
+    text-align: center;
+    margin-bottom: 0.6rem;
+  }
+  .sp-journey .journey-sub {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.9rem;
+    color: #8C7A6B;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .timeline {
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, #D4B5A0, #E8D5C8);
+  }
+
+  .tl-item {
+    position: relative;
+    padding-bottom: 2.2rem;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .tl-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+
+  .tl-dot {
+    position: absolute;
+    left: -2.5rem;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #D4B5A0;
+    z-index: 1;
+  }
+  .tl-item.tl-complete .tl-dot {
+    background: #B8705A;
+    border-color: #B8705A;
+  }
+  .tl-item.tl-active .tl-dot {
+    background: #fff;
+    border-color: #B8705A;
+    box-shadow: 0 0 0 4px rgba(184,112,90,0.18);
+  }
+  .tl-item.tl-future .tl-dot {
+    background: #fff;
+    border-color: #D4C4B8;
+  }
+
+  .tl-year {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #B8705A;
+    margin-bottom: 0.25rem;
+  }
+  .tl-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #3A3632;
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+  .tl-desc {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.88rem;
+    color: #6B5E55;
+    line-height: 1.6;
+  }
+
+  .tl-item.tl-future .tl-year { color: #B8A99C; }
+  .tl-item.tl-future .tl-title { color: #8C7A6B; }
+  .tl-item.tl-future .tl-desc { color: #A89888; }
+
+  /* ── Stay updated ── */
+  .sp-updates {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .sp-updates h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: #3A3632;
+    margin-bottom: 0.8rem;
+  }
+  .sp-updates p {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.95rem;
+    color: #6B5E55;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 720px) {
+    .sp-intro {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+    }
+    .sp-intro .sp-cover {
+      max-width: 220px;
+      margin: 0 auto;
+    }
+    .sp-themes {
+      grid-template-columns: 1fr;
+    }
+    .sp-hero { padding: 5.5rem 1.5rem 2.5rem; }
+    .sp-explores, .sp-updates { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Nicole Chew-Helbig</a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#books">Books</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#practice">Work with Nicole</a></li>
+      <li><a href="writing.html">Writing &amp; Media</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<div class="sp-hero">
+  <a href="index.html" class="back-link">&larr; Back to Home</a>
+  <h1>The Shame Paradox</h1>
+  <p class="subtitle">Why We Fear Most the Emotion That Keeps Us Human</p>
+  <span class="forthcoming-badge">Forthcoming &mdash; Manuscript in Editing</span>
+</div>
+
+<div class="line"></div>
+
+<!-- ═══════ INTRO WITH COVER ═══════ -->
+<div class="sp-intro">
+  <img src="shame-paradox-cover.jpg" alt="The Shame Paradox — book cover" class="sp-cover reveal" />
+  <div class="sp-text reveal">
+    <p class="sp-publisher">HELBIG / FieldNotes Press</p>
+    <p>Through neuroscience, a startling reinterpretation of Genesis, and three clinical stories that stay with you long after reading, this book traces shame from infant neurobiology to its place in consciousness itself — arguing that the emotion we spend our lives fleeing is the one that makes us irreplaceably human.</p>
+    <p>Shame marks us as fundamentally relational beings. Unlike guilt, which concerns what we've done, shame strikes at who we are — our very belonging in the human community. Yet because shame hurts so acutely, we develop elaborate defences against feeling it. Fear of shame paralyses us; dissociation from shame drives addictions and perpetual conflict. We do almost anything to avoid the unbearable feeling that we don't belong.</p>
+    <p>This is shame's paradox: the very emotion that confirms our need for others becomes what drives us into isolation.</p>
+  </div>
+</div>
+
+<!-- ═══════ QUOTE ═══════ -->
+<div class="sp-quote">
+  <blockquote>&ldquo;What makes humans irreplaceable to each other, even in an age of artificial intelligence?&rdquo;</blockquote>
+</div>
+
+<!-- ═══════ WHAT THE BOOK EXPLORES ═══════ -->
+<div class="sp-explores">
+  <h2>What the Book Explores</h2>
+  <p>The Shame Paradox moves between clinical practice, neuroscience, philosophy, and memoir — drawn to the questions that sit at the edge of what psychotherapy can articulate. Where shame meets consciousness. Where relationship meets moral life. Where the body knows what words cannot yet say.</p>
+
+  <div class="sp-themes">
+    <div class="sp-theme-item">The neurobiology of shame — from the infant's first flush of distress to the adult's elaborate architectures of avoidance</div>
+    <div class="sp-theme-item">A reinterpretation of Genesis that reframes shame not as punishment but as the birth of consciousness</div>
+    <div class="sp-theme-item">Three clinical stories exploring how shame organises entire relational fields — saturating the air between people</div>
+    <div class="sp-theme-item">Why artificial intelligence can simulate empathy but cannot experience shame — and what that means for being human</div>
+    <div class="sp-theme-item">How the emotion we flee from is the one that makes genuine connection possible</div>
+    <div class="sp-theme-item">Shame across cultures — from 沒面子 (méi miànzi) to malu — revealing what Western psychology often misses</div>
+  </div>
+</div>
+
+<div class="line"></div>
+
+<!-- ═══════ JOURNEY / TIMELINE ═══════ -->
+<div class="sp-journey">
+  <h2>The Journey of This Book</h2>
+  <p class="journey-sub">Where it began, where it stands, and what comes next</p>
+
+  <div class="timeline">
+
+    <div class="tl-item tl-complete reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2021</div>
+      <div class="tl-title">Writing Begins</div>
+      <div class="tl-desc">The first chapters emerged from years of clinical practice and a growing conviction that shame — the emotion therapists and clients alike spend their lives avoiding — held a deeper truth about what makes us human.</div>
+    </div>
+
+    <div class="tl-item tl-complete reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2022</div>
+      <div class="tl-title">Nottingham &amp; the Shape of the Argument</div>
+      <div class="tl-desc">A pivotal period of research and writing that sharpened the book's central thesis — connecting neuroscience, phenomenology, and the clinical encounter into a single coherent argument.</div>
+    </div>
+
+    <div class="tl-item tl-complete reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2024</div>
+      <div class="tl-title">Manuscript Completed</div>
+      <div class="tl-desc">After three years of writing, rewriting, and living with these ideas, the full manuscript was completed — weaving together neurobiology, a reinterpretation of Genesis, and three clinical stories.</div>
+    </div>
+
+    <div class="tl-item tl-complete reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2025</div>
+      <div class="tl-title">Literary Agents Queried</div>
+      <div class="tl-desc">The manuscript was submitted to literary agents for consideration. The process of finding the right publishing home for a book that sits between clinical writing, philosophy, and memoir.</div>
+    </div>
+
+    <div class="tl-item tl-active reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">Now</div>
+      <div class="tl-title">Sent for Editing</div>
+      <div class="tl-desc">The manuscript is currently with an editor. The path forward — whether through a literary agent or independent publication with HELBIG / FieldNotes Press — remains an open question, and an honest one.</div>
+    </div>
+
+    <div class="tl-item tl-future reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">Next</div>
+      <div class="tl-title">Publication</div>
+      <div class="tl-desc">The book will find its way to readers — one way or another. Sign up below to be among the first to know.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════ STAY UPDATED ═══════ -->
+<div class="sp-updates">
+  <h2>Follow the Journey</h2>
+  <p>If this book speaks to something you recognise, leave your email below. You'll hear from me when there's news — no noise, no frequency.</p>
+  <div class="nl-form">
+    <input type="email" placeholder="Your email address" aria-label="Email address">
+    <button type="button">Notify Me</button>
+  </div>
+  <p class="placeholder-note" style="margin-top: 0.75rem;">Connect to your email service</p>
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="footer-links">
+    <a href="https://psychotherapist.sg" target="_blank">psychotherapist.sg</a>
+    <a href="https://nikhelbig.at" target="_blank">nikhelbig.at</a>
+    <a href="https://nik-helbig.pixels.com" target="_blank">Art</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Nicole Chew-Helbig. All rights reserved.</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .tl-item').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const t = document.querySelector(this.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); document.querySelector('.nav-links')?.classList.remove('open'); }
+    });
+  });
+</script>
+
+</body>
+</html>
