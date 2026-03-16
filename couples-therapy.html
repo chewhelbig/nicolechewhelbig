@@ -198,6 +198,43 @@
     color: var(--muted);
     line-height: 1.6;
   }
+  .part-heading {
+    grid-column: 1 / -1;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    padding: 1.8rem 0 0.2rem;
+    border-bottom: none;
+  }
+  .part-heading:first-child {
+    padding-top: 0.5rem;
+  }
+  .chapter-list li.part-heading::before {
+    content: none;
+  }
+  .chapter-list li.part-heading {
+    counter-increment: none;
+    display: block;
+  }
+  .intro-item {
+    border-bottom: 1px solid var(--light-border);
+    padding: 1rem 0;
+  }
+  .intro-item .ch-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--soft-black);
+    margin-bottom: 0.25rem;
+  }
+  .intro-item .ch-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
 
   /* ── Excerpts / Media ── */
   .media-section {
@@ -394,6 +431,7 @@
     <div class="buy-links">
       <a href="https://www.routledge.com/A-Gestalt-Approach-to-Couples-Therapy-The-Dance-of-Difference/Chew-Helbig/p/book/9781041051466" target="_blank" class="btn btn-dark btn-sm">Routledge</a>
       <a href="https://www.amazon.com/Gestalt-Approach-Couples-Therapy-Difference/dp/1041051468" target="_blank" class="btn btn-outline btn-sm">Amazon</a>
+      <a href="https://www.amazon.com/dp/1041051468#reader_1041051468" target="_blank" class="btn btn-outline btn-sm">Read a Sample</a>
     </div>
     <p class="book-meta">
       ISBN: 978-1041051466<br>
@@ -431,57 +469,80 @@
 <section class="chapters-section">
   <div class="chapters-inner">
     <h2 class="section-title">Inside the Book</h2>
+
+    <div class="intro-item reveal">
+      <div class="ch-title">Introduction: The Dance of Difference</div>
+      <div class="ch-desc">When two become one, there's none. Why the fusion model of relationships leaves couples unable to feel each other — and how the connection model offers a radical reframe.</div>
+    </div>
+
     <ol class="chapter-list">
+      <li class="part-heading reveal">Part I &mdash; Foundations of Presence</li>
       <li class="reveal">
         <div>
-          <div class="ch-title">Understanding Couples Through a Gestalt Lens</div>
-          <div class="ch-desc">Why traditional approaches to couples therapy often diagnose difference rather than work with it — and how Gestalt offers something different.</div>
+          <div class="ch-title">First Contact: The Phenomenological Encounter</div>
+          <div class="ch-desc">What happens when the therapist sets aside diagnosis and simply attends to what is present — the first act of meeting a couple where they are.</div>
         </div>
       </li>
       <li class="reveal">
         <div>
-          <div class="ch-title">The Contact Boundary</div>
-          <div class="ch-desc">The living edge where two people meet. What happens when we stop performing connection and risk actual encounter.</div>
+          <div class="ch-title">Trauma in the Relational Field</div>
+          <div class="ch-desc">How survival strategies forged in earlier life become the creative adjustments that shape — and sometimes trap — the couple's present.</div>
+        </div>
+      </li>
+
+      <li class="part-heading reveal">Part II &mdash; The Paradox of Change</li>
+      <li class="reveal">
+        <div>
+          <div class="ch-title">The Paradoxical Theory of Change in Couples Work</div>
+          <div class="ch-desc">Transformation happens by fully accepting what is, rather than coercing partners to be different — the complete paradoxical journey.</div>
         </div>
       </li>
       <li class="reveal">
         <div>
-          <div class="ch-title">Creative Indifference</div>
+          <div class="ch-title">The Transformative Role of Experiments in Gestalt Couples Therapy</div>
+          <div class="ch-desc">From talk to action: how experiments — role reversal, object exchange, the empty chair — move couples beyond intellectualising and into embodied contact.</div>
+        </div>
+      </li>
+
+      <li class="part-heading reveal">Part III &mdash; The Field and Connection</li>
+      <li class="reveal">
+        <div>
+          <div class="ch-title">Field Theory in Couples Therapy</div>
+          <div class="ch-desc">Relationships exist within webs of influence — cultural expectations, family histories, present circumstances — and the therapist participates in, rather than observes, the field.</div>
+        </div>
+      </li>
+      <li class="reveal">
+        <div>
+          <div class="ch-title">Shame, the Pathos of the Field</div>
+          <div class="ch-desc">Shame resides at the contact boundary — the vulnerable moment of being truly seen — and is often the primary force that freezes the cycle and drives partners into isolation.</div>
+        </div>
+      </li>
+      <li class="reveal">
+        <div>
+          <div class="ch-title">The Cycle of Connection: Movement Between Contact and Withdrawal</div>
+          <div class="ch-desc">The five phases of the connection wave — withdrawal, contact, intimacy, confluence, and isolation — and what happens when couples get stuck between them.</div>
+        </div>
+      </li>
+
+      <li class="part-heading reveal">Part IV &mdash; Integration and Practice</li>
+      <li class="reveal">
+        <div>
+          <div class="ch-title">Creative Indifference: Conflict and the Therapist's Centred Presence</div>
           <div class="ch-desc">Friedlaender's concept applied to couples work — the therapist's capacity to hold both sides without taking either, creating space for something new to emerge.</div>
         </div>
       </li>
       <li class="reveal">
         <div>
-          <div class="ch-title">Dialogue and the I–Thou Relationship</div>
-          <div class="ch-desc">Buber's philosophy of meeting as the foundation of relational healing — what it means to truly see another person.</div>
-        </div>
-      </li>
-      <li class="reveal">
-        <div>
-          <div class="ch-title">Field Theory in Couples Therapy</div>
-          <div class="ch-desc">How relationships exist within webs of influence — cultural expectations, family histories, present circumstances — and how therapists participate in, rather than observe, the field.</div>
-        </div>
-      </li>
-      <li class="reveal">
-        <div>
-          <div class="ch-title">Embodiment and Sexuality</div>
-          <div class="ch-desc">Working with the body in couples therapy — where desire, shame, and vulnerability converge in the most undefended language we have.</div>
-        </div>
-      </li>
-      <li class="reveal">
-        <div>
-          <div class="ch-title">Cross-Cultural Perspectives</div>
-          <div class="ch-desc">What a practice shaped by Singapore and Vienna reveals about intimacy, gender, and the cultural fields that shape every relationship.</div>
-        </div>
-      </li>
-      <li class="reveal">
-        <div>
-          <div class="ch-title">The Dance of Difference</div>
-          <div class="ch-desc">Why the couple who can say <em>your difference is not a deficiency</em> has taken the first step toward genuine meeting — and what that meeting looks like in practice.</div>
+          <div class="ch-title">Integration with Other Modalities</div>
+          <div class="ch-desc">How a Gestalt approach sits alongside EFT, the Gottman Method, IFS, and the work of Esther Perel — what it shares, where it diverges, and why it matters.</div>
         </div>
       </li>
     </ol>
-    <p class="placeholder-note" style="margin-top: 1rem;">Chapter titles are representative — update with final published TOC</p>
+
+    <div class="intro-item reveal" style="border-bottom: none;">
+      <div class="ch-title">Conclusion: Beyond the Therapy Room</div>
+      <div class="ch-desc">What happens when the principles of contact, difference, and presence extend beyond the clinical setting — into the way we live together.</div>
+    </div>
   </div>
 </section>
 
