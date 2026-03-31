@@ -247,26 +247,50 @@
   .tl-item.tl-future .tl-title { color: #8C7A6B; }
   .tl-item.tl-future .tl-desc { color: #A89888; }
 
-  /* ── Stay updated ── */
-  .sp-updates {
+  /* ── Follow on Instagram ── */
+  .sp-follow {
     max-width: 600px;
     margin: 0 auto;
     padding: 4rem 2rem;
     text-align: center;
   }
-  .sp-updates h2 {
+  .sp-follow h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
     font-size: 1.6rem;
     color: #3A3632;
     margin-bottom: 0.8rem;
   }
-  .sp-updates p {
+  .sp-follow p {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 0.95rem;
     color: #6B5E55;
     line-height: 1.6;
     margin-bottom: 1.5rem;
+  }
+  .ig-follow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: #3A3632;
+    text-decoration: none;
+    padding: 0.65rem 1.6rem;
+    border: 1px solid #D9CFC6;
+    border-radius: 2px;
+    transition: border-color 0.25s ease, color 0.25s ease;
+  }
+  .ig-follow-link:hover {
+    border-color: #B8453A;
+    color: #B8453A;
+  }
+  .ig-follow-link svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
   }
 
   /* ── Responsive ── */
@@ -283,7 +307,7 @@
       grid-template-columns: 1fr;
     }
     .sp-hero { padding: 5.5rem 1.5rem 2.5rem; }
-    .sp-explores, .sp-updates { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .sp-explores, .sp-follow { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
 </style>
 </head>
@@ -318,9 +342,9 @@
 
 <!-- ═══════ INTRO WITH COVER ═══════ -->
 <div class="sp-intro">
-  <img src="the-shame-paradox1.jpg" alt="The Shame Paradox — book cover" class="sp-cover reveal" />
+  <img src="shame-paradox-cover.jpg" alt="The Shame Paradox — book cover" class="sp-cover reveal" />
   <div class="sp-text reveal">
-    <p class="sp-publisher">Publisher t.b.a.</p>
+    <p class="sp-publisher">HELBIG / FieldNotes Press</p>
     <p>Through neuroscience, a startling reinterpretation of Genesis, and three clinical stories that stay with you long after reading, this book traces shame from infant neurobiology to its place in consciousness itself — arguing that the emotion we spend our lives fleeing is the one that makes us irreplaceably human.</p>
     <p>Shame marks us as fundamentally relational beings. Unlike guilt, which concerns what we've done, shame strikes at who we are — our very belonging in the human community. Yet because shame hurts so acutely, we develop elaborate defences against feeling it. Fear of shame paralyses us; dissociation from shame drives addictions and perpetual conflict. We do almost anything to avoid the unbearable feeling that we don't belong.</p>
     <p>This is shame's paradox: the very emotion that confirms our need for others becomes what drives us into isolation.</p>
@@ -381,7 +405,7 @@
       <div class="tl-dot"></div>
       <div class="tl-year">2025</div>
       <div class="tl-title">Literary Agents Queried</div>
-      <div class="tl-desc">The manuscript was submitted to literary agents for consideration. The process of finding the right publishing home for a book that sits between clinical writing, philosophy, and memoir.</div>
+      <div class="tl-desc">The process of finding the right publishing home for a book that sits between clinical writing, philosophy, and memoir.</div>
     </div>
 
     <div class="tl-item tl-active reveal">
@@ -395,21 +419,20 @@
       <div class="tl-dot"></div>
       <div class="tl-year">Next</div>
       <div class="tl-title">Publication</div>
-      <div class="tl-desc">The book will find its way to readers — one way or another. Sign up below to be among the first to know.</div>
+      <div class="tl-desc">The book will find its way to readers — one way or another. Follow along on Instagram to be among the first to know.</div>
     </div>
 
   </div>
 </div>
 
-<!-- ═══════ STAY UPDATED ═══════ -->
-<div class="sp-updates">
+<!-- ═══════ FOLLOW ON INSTAGRAM ═══════ -->
+<div class="sp-follow">
   <h2>Follow the Journey</h2>
-  <p>If this book speaks to something you recognise, leave your email below. You'll hear from me when there's news — no noise, no frequency.</p>
-  <div class="nl-form">
-    <input type="email" placeholder="Your email address" aria-label="Email address">
-    <button type="button">Notify Me</button>
-  </div>
-  <p class="placeholder-note" style="margin-top: 0.75rem;">Connect to your email service</p>
+  <p>If this book speaks to something you recognise, come find me on Instagram — reflections on writing, shame, consciousness, and the messy work of being human.</p>
+  <a href="https://www.instagram.com/nikhelbig/" target="_blank" class="ig-follow-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    @nikhelbig
+  </a>
 </div>
 
 <!-- ═══════ FOOTER ═══════ -->
