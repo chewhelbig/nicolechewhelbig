@@ -17,6 +17,60 @@
     margin-top: 0.5rem;
     font-style: italic;
   }
+
+  /* Social follow section */
+  .social-follow {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--warm-white, #FAF6F2);
+  }
+  .social-follow h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: var(--soft-black, #3A3632);
+    margin-bottom: 0.5rem;
+  }
+  .social-follow > p {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.95rem;
+    color: #8C7A6B;
+    margin-bottom: 2rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+  }
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: var(--soft-black, #3A3632);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--light-border, #D9CFC6);
+    border-radius: 2px;
+    transition: border-color 0.25s ease, color 0.25s ease;
+  }
+  .social-link:hover {
+    border-color: var(--terracotta, #B8453A);
+    color: var(--terracotta, #B8453A);
+  }
+  .social-link svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
 </style>
 </head>
 <body>
@@ -146,15 +200,22 @@
   </div>
 </section>
 
-<section id="contact" class="newsletter">
-  <div class="newsletter-inner">
-    <h2>Stay Connected</h2>
-    <p>Occasional writing on consciousness, relationship, and what it means to be human.</p>
-    <div class="nl-form">
-      <input type="email" placeholder="Your email address" aria-label="Email address">
-      <button type="button">Subscribe</button>
-    </div>
-    <p class="placeholder-note" style="margin-top: 0.75rem;">Connect to your email service</p>
+<section id="contact" class="social-follow">
+  <h2>Stay Connected</h2>
+  <p>Occasional reflections on consciousness, relationship, and what it means to be human.</p>
+  <div class="social-links">
+    <a href="https://www.instagram.com/nikhelbig/" target="_blank" class="social-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.instagram.com/psychotherapistsg" target="_blank" class="social-link">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78c.27 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 10.86 4.46c1.68-1.7 2.15-3.48 2.15-5.48V8.74a8.26 8.26 0 0 0 4.84 1.56V6.85a4.84 4.84 0 0 1-1.41-.16z"/></svg>
+      TikTok
+    </a>
+    <a href="https://www.linkedin.com/in/nicole-chew-helbig-453991227/" target="_blank" class="social-link">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      LinkedIn
+    </a>
   </div>
 </section>
 
