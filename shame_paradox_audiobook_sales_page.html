@@ -1,0 +1,149 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+  .sp-root { font-family: 'Jost', sans-serif; max-width: 720px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+  .sp-eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 1.5rem; }
+  .sp-hero { display: grid; grid-template-columns: 160px 1fr; gap: 2rem; align-items: start; margin-bottom: 3rem; }
+  .sp-cover { width: 160px; border: 0.5px solid var(--color-border-tertiary); }
+  .sp-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; line-height: 1.1; margin: 0 0 0.4rem; color: var(--color-text-primary); }
+  .sp-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; font-weight: 300; color: var(--color-text-secondary); margin: 0 0 1rem; }
+  .sp-author { font-size: 13px; letter-spacing: 0.06em; color: var(--color-text-secondary); margin: 0 0 1.5rem; }
+  .sp-divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 2rem 0; }
+  .sp-section-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 1.2rem; }
+  .sp-desc { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 300; line-height: 1.75; color: var(--color-text-primary); margin-bottom: 1.5rem; }
+  .sp-pullquote { border-left: 2px solid var(--color-border-secondary); padding-left: 1.25rem; margin: 2rem 0; font-family: 'Cormorant Garamond', serif; font-size: 21px; font-style: italic; font-weight: 300; line-height: 1.5; color: var(--color-text-primary); }
+  .sp-chapters { display: flex; flex-direction: column; gap: 0; margin-bottom: 2rem; }
+  .sp-chapter { display: flex; align-items: center; gap: 1rem; padding: 0.85rem 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .sp-chapter:first-child { border-top: 0.5px solid var(--color-border-tertiary); }
+  .sp-ch-num { font-size: 11px; letter-spacing: 0.1em; color: var(--color-text-secondary); min-width: 32px; }
+  .sp-ch-title { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 400; flex: 1; color: var(--color-text-primary); }
+  .sp-ch-free { font-size: 11px; letter-spacing: 0.08em; color: var(--color-text-success); background: var(--color-background-success); padding: 3px 8px; border-radius: 4px; }
+  .sp-ch-lock { font-size: 13px; color: var(--color-text-secondary); }
+  .sp-pricing { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .sp-price-card { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 1.25rem; border: 0.5px solid var(--color-border-tertiary); }
+  .sp-price-card.featured { border: 1.5px solid var(--color-border-primary); background: var(--color-background-primary); }
+  .sp-price-tag { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--color-text-primary); line-height: 1; margin-bottom: 4px; }
+  .sp-price-label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+  .sp-price-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+  .sp-badge { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); padding: 3px 8px; border-radius: 4px; color: var(--color-text-secondary); margin-bottom: 0.75rem; display: inline-block; }
+  .sp-cta { width: 100%; padding: 14px; font-family: 'Jost', sans-serif; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--color-text-primary); color: var(--color-background-primary); border: none; border-radius: var(--border-radius-md); cursor: pointer; margin-top: 1rem; transition: opacity 0.2s; }
+  .sp-cta:hover { opacity: 0.8; }
+  .sp-cta-sec { width: 100%; padding: 14px; font-family: 'Jost', sans-serif; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: var(--color-text-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); cursor: pointer; margin-top: 0.75rem; transition: background 0.2s; }
+  .sp-cta-sec:hover { background: var(--color-background-secondary); }
+  .sp-about { display: flex; gap: 1.25rem; align-items: flex-start; margin: 2rem 0; }
+  .sp-avatar { width: 52px; height: 52px; border-radius: 50%; border: 0.5px solid var(--color-border-tertiary); flex-shrink: 0; object-fit: cover; }
+  .sp-about-text { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
+  .sp-about-name { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .sp-notice { font-size: 12px; color: var(--color-text-secondary); text-align: center; margin-top: 2rem; line-height: 1.6; }
+  @media (max-width: 480px) {
+    .sp-hero { grid-template-columns: 1fr; }
+    .sp-cover { width: 120px; }
+    .sp-pricing { grid-template-columns: 1fr; }
+    .sp-title { font-size: 28px; }
+  }
+</style>
+
+<div class="sp-root">
+  <p class="sp-eyebrow">Audiobook — narrated by the author</p>
+
+  <div class="sp-hero">
+    <img class="sp-cover" src="https://nicolechewhelbig.com/the-shame-paradox1.jpg" alt="The Shame Paradox book cover" onerror="this.style.display='none'">
+    <div>
+      <h1 class="sp-title">The Shame Paradox</h1>
+      <p class="sp-subtitle">Why we fear most the emotion that keeps us human</p>
+      <p class="sp-author">Dr Nicole Chew-Helbig, PhD</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <span style="font-size:12px;color:var(--color-text-secondary);">&#9654; Narrated by the author</span>
+        <span style="font-size:12px;color:var(--color-text-secondary);">&#9632; Chapter by chapter</span>
+        <span style="font-size:12px;color:var(--color-text-secondary);">&#9632; Includes reflection notes</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sp-pullquote">
+    "The emotion we fear most is the one that makes all of this possible."
+  </div>
+
+  <p class="sp-desc">
+    Through neuroscience, a reinterpretation of Genesis, and three clinical stories, this book traces shame from infant neurobiology to its place in consciousness itself — arguing that the emotion we spend our lives fleeing is the one that makes us irreplaceably human.
+  </p>
+
+  <hr class="sp-divider">
+
+  <p class="sp-section-label">Chapters</p>
+  <div class="sp-chapters">
+    <div class="sp-chapter">
+      <span class="sp-ch-num">01</span>
+      <span class="sp-ch-title">Introduction — The emotion we cannot name</span>
+      <span class="sp-ch-free">Free</span>
+    </div>
+    <div class="sp-chapter">
+      <span class="sp-ch-num">02</span>
+      <span class="sp-ch-title">Infant neurobiology and the origins of shame</span>
+      <span class="sp-ch-lock">&#8212;</span>
+    </div>
+    <div class="sp-chapter">
+      <span class="sp-ch-num">03</span>
+      <span class="sp-ch-title">Genesis revisited — a shame story hiding in plain sight</span>
+      <span class="sp-ch-lock">&#8212;</span>
+    </div>
+    <div class="sp-chapter">
+      <span class="sp-ch-num">04</span>
+      <span class="sp-ch-title">The first clinical story — dissociation and belonging</span>
+      <span class="sp-ch-lock">&#8212;</span>
+    </div>
+    <div class="sp-chapter">
+      <span class="sp-ch-num">05</span>
+      <span class="sp-ch-title">Shame and consciousness — where they meet</span>
+      <span class="sp-ch-lock">&#8212;</span>
+    </div>
+    <div class="sp-chapter">
+      <span class="sp-ch-num">06</span>
+      <span class="sp-ch-title">The second clinical story — addiction and the absent self</span>
+      <span class="sp-ch-lock">&#8212;</span>
+    </div>
+    <div class="sp-chapter">
+      <span class="sp-ch-num">07</span>
+      <span class="sp-ch-title">What makes us irreplaceable</span>
+      <span class="sp-ch-lock">&#8212;</span>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--color-text-secondary);margin-top:-0.5rem;margin-bottom:2rem;">Chapter titles are illustrative — final titles will be updated on publication.</p>
+
+  <hr class="sp-divider">
+
+  <p class="sp-section-label">Purchase options</p>
+  <div class="sp-pricing">
+    <div class="sp-price-card">
+      <div class="sp-badge">Single chapter</div>
+      <div class="sp-price-tag">$4</div>
+      <div class="sp-price-label">per chapter</div>
+      <div class="sp-price-desc">Buy and listen to individual chapters at your own pace. Own each chapter permanently.</div>
+      <button class="sp-cta-sec" onclick="sendPrompt('How should I price individual chapters of The Shame Paradox audiobook?')">How to price this ↗</button>
+    </div>
+    <div class="sp-price-card featured">
+      <div class="sp-badge">Full audiobook</div>
+      <div class="sp-price-tag">$24</div>
+      <div class="sp-price-label">complete access</div>
+      <div class="sp-price-desc">All chapters plus author reflection notes. Best value — save versus buying separately.</div>
+      <button class="sp-cta" onclick="sendPrompt('How do I set up Payhip or Gumroad to sell The Shame Paradox audiobook on my website?')">Set this up ↗</button>
+    </div>
+  </div>
+
+  <hr class="sp-divider">
+
+  <p class="sp-section-label">About the author</p>
+  <div class="sp-about">
+    <img class="sp-avatar" src="https://nicolechewhelbig.com/headshot.jpg" alt="Nicole Chew-Helbig" onerror="this.style.background='var(--color-background-secondary)';this.src=''">
+    <div>
+      <p class="sp-about-name">Dr Nicole Chew-Helbig, PhD</p>
+      <p class="sp-about-text">Gestalt Therapist, Couples Therapist, Author and Researcher based in Singapore. She holds a doctorate in Psychotherapy Science from Vienna and has worked with asylum seekers, war trauma survivors, and couples across cultural divides. She is the author of <em>A Gestalt Approach to Couples Therapy</em> (Routledge).</p>
+    </div>
+  </div>
+
+  <p class="sp-notice">
+    Purchases are delivered digitally. All sales final.<br>
+    Questions? Contact Nicole at <a href="https://nicolechewhelbig.com" style="color:var(--color-text-primary);">nicolechewhelbig.com</a>
+  </p>
+</div>
