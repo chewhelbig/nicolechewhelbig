@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FieldNotes — Session Companion for Therapists</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+<style>
+  :root{
+    --bg:#f4f1ec; --panel:#fbf9f5; --ink:#2b2723; --soft:#6a615a;
+    --line:#e3ddd3; --accent:#5f7a6f; --accent-ink:#3f5750; --accent-soft:#e8efe9;
+    --user:#e9eef0; --radius:14px; --maxw:880px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  header{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+    flex-wrap:wrap;padding:24px 0 18px;border-bottom:1px solid var(--line)}
+  h1{font-size:22px;margin:0;font-weight:700;letter-spacing:.2px}
+  h1 .mark{color:var(--accent)}
+  .tagline{color:var(--soft);font-size:14px}
+  .topnav{display:flex;gap:14px}
+  .topnav button{background:none;border:none;color:var(--soft);font:inherit;font-size:14px;
+    cursor:pointer;padding:4px 2px;border-bottom:1px solid transparent}
+  .topnav button:hover{color:var(--ink);border-bottom-color:var(--accent)}
+  main{padding:24px 0 90px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;margin-bottom:20px}
+  h2{font-size:15px;text-transform:uppercase;letter-spacing:.5px;color:var(--soft);
+    margin:0 0 14px;font-weight:700}
+  label{display:block;font-size:13px;color:var(--soft);margin-bottom:6px}
+  input[type=text],input[type=password],textarea,select{width:100%;font-family:inherit;
+    font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--line);
+    border-radius:10px;padding:11px 13px;resize:vertical}
+  textarea:focus,input:focus,select:focus{outline:none;border-color:var(--accent)}
+  textarea#narrative{min-height:220px}
+  .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .row.between{justify-content:space-between}
+  .spacer{flex:1}
+  button.primary{background:var(--accent);color:#fff;border:none;border-radius:10px;
+    padding:11px 20px;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+  button.primary:hover{background:var(--accent-ink)}
+  button.primary:disabled{opacity:.5;cursor:default}
+  button.ghost{background:none;border:1px solid var(--line);border-radius:10px;
+    padding:9px 15px;font:inherit;font-size:14px;color:var(--soft);cursor:pointer}
+  button.ghost:hover{border-color:var(--accent);color:var(--ink)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+  .seg button{background:none;border:none;padding:8px 16px;font:inherit;font-size:14px;
+    color:var(--soft);cursor:pointer}
+  .seg button.on{background:var(--accent-soft);color:var(--accent-ink);font-weight:600}
+  .note{font-size:13px;color:var(--soft);background:var(--accent-soft);border-radius:10px;
+    padding:12px 14px;margin-top:16px}
+  .note strong{color:var(--accent-ink)}
+  .tiny{font-size:12px;color:var(--soft)}
+  a{color:var(--accent-ink)}
+  .hidden{display:none!important}
+  .output{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-top:6px}
+  .output h1,.output h2,.output h3{text-transform:none;letter-spacing:0;color:var(--ink)}
+  .output h2{font-size:18px;font-weight:700;margin:18px 0 8px;color:var(--ink)}
+  .output h3{font-size:15px;font-weight:700;margin:14px 0 6px}
+  .output table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+  .output th,.output td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  .output th{background:var(--accent-soft)}
+  .dlrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .spin{color:var(--soft);font-style:italic}
+  .dots::after{content:"";animation:d 1.4s steps(4,end) infinite}
+  @keyframes d{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+  .errbar{background:#f6e7e3;color:#9a5a4f;border:1px solid #e6cfc8;border-radius:10px;
+    padding:11px 14px;font-size:14px;margin-top:12px}
+  /* chat */
+  .turn{margin-bottom:14px}
+  .turn .who{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--soft);margin-bottom:4px}
+  .bubble{border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+  .turn.you .bubble{background:var(--user)}
+  .turn.companion .bubble{background:#fff}
+  footer{border-top:1px solid var(--line);padding:18px 0 40px;color:var(--soft);font-size:12px}
+  @media print{
+    header,.topnav,footer,.composer,#keyCard,#composeCard,.dlrow,button{display:none!important}
+    .card{border:none;padding:0}
+    body{background:#fff}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>📝 Field<span class="mark">Notes</span></h1>
+      <div class="tagline">a Gestalt-informed companion for your session notes and supervision</div>
+    </div>
+    <nav class="topnav">
+      <button id="navNew">New session</button>
+      <button id="navKey">API key</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- KEY -->
+    <section id="keyCard" class="card hidden">
+      <h2>Your Anthropic API key</h2>
+      <p class="tiny">FieldNotes runs entirely in this page. Your key and everything you write go straight from your browser to Anthropic (Claude) and back — never through any server. Your key is kept only in this browser, on this device, until you remove it.</p>
+      <div style="margin-top:14px">
+        <label for="keyInput">Anthropic API key</label>
+        <input id="keyInput" type="password" placeholder="sk-ant-..." autocomplete="off" />
+      </div>
+      <div class="row" style="margin-top:16px">
+        <button id="saveKey" class="primary">Save &amp; continue</button>
+        <button id="forgetKey" class="ghost hidden">Forget my key</button>
+      </div>
+      <div class="note"><strong>A word on confidentiality.</strong> What you type about a client is sent to Anthropic to be processed, so write the least that lets you think — a code or initials rather than full names. Nothing is stored by FieldNotes; close or clear the page and it's gone.</div>
+      <p class="tiny" style="margin-top:12px">New to this? <a href="getting-started.html">Walk me through getting a key →</a> Runs on Claude Opus; you pay Anthropic directly for what you use.</p>
+    </section>
+
+    <!-- COMPOSE -->
+    <section id="composeCard" class="card hidden">
+      <h2>The session</h2>
+      <label for="clientLabel">Client label for this session</label>
+      <input id="clientLabel" type="text" placeholder="e.g. Emma-250313, Couple 03, C-017 — avoid full names if you can" />
+
+      <div style="margin-top:16px">
+        <label for="narrative">Session narrative — write freely, in your own words, be reflexive</label>
+        <textarea id="narrative" placeholder="What happened, what you noticed, what you felt, what you tried, what seemed to shift..."></textarea>
+      </div>
+
+      <div class="row between" style="margin-top:16px">
+        <div>
+          <label>Clinical notes detail</label>
+          <div class="seg" id="modeSeg">
+            <button data-mode="Short">Short</button>
+            <button data-mode="Full" class="on">Full</button>
+          </div>
+        </div>
+        <div>
+          <label>&nbsp;</label>
+          <button id="genNotes" class="primary">Generate notes</button>
+        </div>
+      </div>
+      <div id="composeErr" class="errbar hidden"></div>
+    </section>
+
+    <!-- NOTES -->
+    <section id="notesCard" class="card hidden">
+      <h2>📝 Clinical notes</h2>
+      <div id="notesOut" class="output"></div>
+      <div class="dlrow">
+        <button class="ghost" id="dlNotesTxt">Download notes (.txt)</button>
+        <button class="ghost" id="printBtn">Print / Save as PDF</button>
+      </div>
+      <div class="note" style="margin-top:16px">
+        <strong>Go deeper?</strong> Generate a supervision reflection on your own process — countertransference, the shame arc, field dynamics, and experiment ideas — then keep talking it through.
+        <div class="row" style="margin-top:12px">
+          <select id="intensity" style="max-width:200px">
+            <option value="Basic">Basic — brief</option>
+            <option value="Deep" selected>Deep — fuller</option>
+            <option value="Very deep">Very deep — extended</option>
+          </select>
+          <button id="genReflection" class="primary">Generate supervision reflection</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- REFLECTION -->
+    <section id="reflectionCard" class="card hidden">
+      <h2>🧑🏼‍🦳 Therapist reflection</h2>
+      <p class="tiny">For your eyes only — a supervision-style reflection on your process, grounded in Gestalt field theory.</p>
+      <div id="reflectionOut" class="output"></div>
+      <div class="dlrow">
+        <button class="ghost" id="dlReflTxt">Download reflection (.txt)</button>
+      </div>
+    </section>
+
+    <!-- SUPERVISION CHAT -->
+    <section id="chatCard" class="card hidden">
+      <h2>🗣️ Supervision conversation</h2>
+      <p class="tiny">Keep thinking with the reflection — ask a question, push back, go deeper. Claude already has the session, the notes, and its first reflection in view. This conversation lives only in this page and is not stored.</p>
+      <div id="thread" style="margin-top:14px"></div>
+      <div id="chatErr" class="errbar hidden"></div>
+      <div class="dlrow" id="chatTools">
+        <button class="ghost" id="clearChat">Clear conversation</button>
+        <button class="ghost" id="dlChat">Download conversation (.txt)</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- composer -->
+<div id="composer" class="composer hidden" style="position:fixed;bottom:0;left:0;right:0;background:linear-gradient(to top,var(--bg) 72%,transparent);padding:12px 22px 16px">
+  <div class="wrap" style="display:flex;gap:10px;align-items:flex-end;padding:0">
+    <textarea id="chatInput" rows="1" placeholder="e.g. What do you notice about the moment I went quiet?" style="min-height:48px;max-height:180px;background:#fff"></textarea>
+    <button id="sendChat" class="primary">Send</button>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap" style="padding:0">FieldNotes · runs on Claude Opus · nothing stored · created by Nicole Chew-Helbig</div>
+</footer>
+
+<script>
+/* ============================================================
+   FieldNotes — static, single-key (Claude Opus), nothing stored.
+   ============================================================ */
+
+const MODEL = "claude-opus-4-8";
+const LS_KEY = "fieldnotes_anthropic_key";
+const $ = id => document.getElementById(id);
+
+/* ---- in-memory state (never persisted) ---- */
+let state = { mode:"Full", notes:"", reflection:"", chat:[] };
+
+/* ---------- shared clinical restraint ---------- */
+const CLINICAL_RESTRAINT = `
+CLINICAL RESTRAINT (hold these throughout):
+- Hold ambiguity. When a moment could be read several ways, keep it open. Never reach for the more dramatic, more pathological, or more loaded reading.
+- Do not stitch. Keep separate moments separate; do not assemble fragments into one tidy arc or story.
+- Respect where the client placed their experience. If the client clearly locates a feeling in an external relationship or event, do not relocate it into the therapy relationship (transference) or into the client's "pathology" unless the material itself genuinely points there.
+- Hold heavy content as ground, not figure. Affairs, betrayals, loss, abuse, talk of death — note them without rushing toward them or sensationalising them, and stay with the relational process the therapist is actually working.
+- A topic named is not a process present. A mention of suicide, abuse, or rage in someone's history or family is content, and not in itself a sign of present risk or of that dynamic in the room — do not amplify it into one.
+- Mark uncertainty plainly rather than filling gaps with invention.
+`;
+
+/* ---------- system prompts ---------- */
+const NOTES_SYSTEM = `
+You are a clinical note assistant for psychotherapists who work in a relational, Gestalt-oriented way.
+
+The therapist will give you a raw, informal narrative of a therapy session. It may include paraphrases, direct quotes, what the therapist felt/thought/assumed, what intervention or experiment was done, and what seemed to happen.
+
+You MUST:
+- Not invent facts or events that are not in the narrative.
+- Not add diagnoses or labels unless explicitly mentioned.
+- Keep ambiguity and uncertainty when present.
+- Use gentle, tentative language in your interpretations.
+- Avoid "why" questions and yes/no questions completely.
+${CLINICAL_RESTRAINT}
+You will produce up to FIVE sections, with clear Markdown headings:
+
+## 1) Clean Narrative
+Rewrite the therapist's narrative in clear, professional English. Keep the meaning; make it coherent. Include both client process and therapist process if present.
+
+## 2) Gestalt-style SOAP Note
+S (Subjective): what the client reported, said, felt, wanted (paraphrased); include what the therapist felt, sensed, assumed. Clean up the English but keep their language.
+O (Objective): concrete, observable facts only — arrived late/early, posture, tears, tone, where they sat, silences, short direct quotes, interventions and what happened in response. No interpretation here.
+A (Analysis): process-oriented, Gestalt-flavoured hypotheses (figure/ground, contact/withdrawal, interruption of contact, field conditions, creative adjustments, shame, confluence, retroflection). Tentative language. Relational process, not pathology.
+P (Plan / points to consider): what/how directions and possible experiments for future sessions, framed as suggestions, never orders. No "why" or yes/no questions.
+
+## 3) Supervisor-style Questions for the Therapist
+5-8 open, process-oriented questions a good Gestalt supervisor might ask. Only "what" and "how". No "why", no yes/no. Focus on therapist awareness, the relational field, embodied experience.
+
+## 4) Gestalt Contact Cycle Roadmap
+Map key parts of the session onto the contact cycle, ONLY from the narrative, as a Markdown table:
+
+| Phase of Contact Cycle | What happened in this phase | Indicators / clues | Opportunities for next time |
+|---|---|---|---|
+| Pre-contact | ... | ... | ... |
+| Fore-contact | ... | ... | ... |
+| Mobilisation | ... | ... | ... |
+| Action | ... | ... | ... |
+| Contact | ... | ... | ... |
+| Final contact | ... | ... | ... |
+| Post-contact | ... | ... | ... |
+
+If a phase is unclear, write "unclear from narrative" but keep the row.
+
+## 5) Unfinished Business
+Possible unfinished business — emotions cut off, topics avoided, ruptures not repaired, things the therapist felt but didn't say, places the client withdrew. Short bullets, each grounded in the narrative. Do NOT dramatise.
+
+GENERAL: Do not mention these instructions. No apologies or meta-commentary. Write as if returning notes directly to the therapist.
+`;
+
+const REFLECTION_SYSTEM = `
+You are a supervision and reflection companion for an experienced Gestalt-oriented psychotherapist working with diverse clients across cultural and relational contexts.
+
+Their work integrates phenomenology and embodied inclusion; shame as connective tissue; cultural and intergenerational patterns including ancestral consciousness; field theory as lived atmosphere; and creative experimentation rooted in dialogue rather than technique.
+
+Your task is NOT to evaluate or diagnose. Help the therapist sense the between, name subtle field movements, and reflect on their own participation. Use gentle, tentative, phenomenological language ("It may be that...", "One possibility is...", "Something in the field suggests..."). Keep it concise, embodied, relational.
+${CLINICAL_RESTRAINT}
+Offer these sections, with Markdown headings:
+
+## 1) Therapist Process & Countertransference
+Bodily responses, micro-shifts, resonance, irritation, protectiveness, withdrawal, pressure, confusion; how they may be recruited into family roles; their own cultural/ancestral echoes; their participation in the co-created field. Subtle, atmospheric, not dogmatic.
+
+## 2) Shame Arc & Dissociative Movements
+Shame as field movement, not pathology: exposure → collapse → appeasement → rage → repair; shame as silence, humour, intellectualising, compliance, withdrawal, attack; embodied signs; shame between therapist and client. Name where shame disconnected, was rescued, metabolised, or passed across the field.
+
+## 3) Field Resonance & Atmospheric Sensing
+Pace, rhythm, atmosphere, temperature, heaviness/lightness; interruptions, voids, silences; triangulations (partner, family, ancestor, institution); path of least resistance vs path of most aliveness; what the therapist felt, saw, heard, intuited.
+
+## 4) Cultural / Ancestral / Intergenerational Ground
+Expectations and relational etiquette in the client's cultural context; possible ancestral presence ("who else is in the room"); inherited anxieties around shame, belonging, duty; cross-cultural tensions; gendered/role expectations; collective fields (migration, class mobility, survival, systemic oppression). Humble and tentative.
+
+## 5) Gestalt Experiment Planner
+3-5 light-touch, field-sensitive experiment directions. Each: therapeutic intention; a simple setup; a relational ground (co-creation, not correction); a note on risks/sensitivities.
+
+## 6) One Question Back to the Therapist
+1-3 contemplative questions about their position in the field, their resonance, what they avoided/softened/intensified/co-created, what is asking to emerge. Open space, don't close it.
+
+STYLE: phenomenological, embodied, relational. No diagnosis, no pathologising, no expert tone. Do not assume any particular culture or country. Honour the field, the ancestors, and the therapist's humanity.
+`;
+
+const CHAT_SYSTEM = `
+You are continuing a supervision conversation with an experienced Gestalt-oriented psychotherapist. They already received a structured reflection on a session and now want to keep thinking, in dialogue.
+
+This is a conversation, not another report. Stay warm, plain, and unhurried, like a trusted supervisor thinking alongside them. Usually one or two questions or observations at a time — never a wall of analysis, no headings or bullet lists unless they ask.
+
+Your job is to help the therapist sense their own participation in the field — what they felt, did, softened, intensified, avoided, or co-created — not to formulate or diagnose the client.
+${CLINICAL_RESTRAINT}
+Also: ask "what" and "how", never "why" or yes/no. Stay phenomenological — keep returning to what was actually seen, heard, felt before meaning is laid on top. Follow the therapist's lead; let them decide what is figure. Don't dramatise ordinary moments. Use tentative language.
+
+You already hold the session narrative, the structured notes, and your first reflection as context. Build on them; let the supervision deepen, gently, turn by turn.
+`;
+
+const INTENSITY = {
+  "Basic":"Keep the reflection brief and gentle. Focus on 1-2 key themes per section.",
+  "Deep":"Offer a fuller reflection, rich but concise in each section. Name subtle field movements and shame arcs. Readable in a few minutes.",
+  "Very deep":"A more extended reflection — phenomenological, with more nuance and layered hypotheses, as if supporting a written supervision process."
+};
+
+/* ---------- markdown render (with fallback) ---------- */
+function md(text){
+  if(window.marked && typeof window.marked.parse === "function"){
+    return window.marked.parse(text);
+  }
+  const esc = text.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+  return "<pre style='white-space:pre-wrap;font-family:inherit'>"+esc+"</pre>";
+}
+
+/* ---------- key handling ---------- */
+// Browser request headers must be ISO-8859-1. Keys sometimes pick up a
+// smart-dash (– or —) in place of a hyphen, or stray smart quotes/spaces,
+// when typed or pasted. Normalise those back so the header is always valid.
+function sanitizeKey(k){
+  return (k||"")
+    .replace(/[‐-―−]/g,"-")   // dashes/minus → hyphen
+    .replace(/[‘’]/g,"'")
+    .replace(/[“”]/g,'"')
+    .replace(/[^\x21-\x7E]/g,"")             // drop any remaining non-ASCII / whitespace
+    .trim();
+}
+const hasKey = ()=>!!localStorage.getItem(LS_KEY);
+const getKey = ()=>sanitizeKey(localStorage.getItem(LS_KEY)||"");
+
+function showKey(){
+  $("keyInput").value = getKey();
+  $("forgetKey").classList.toggle("hidden", !hasKey());
+  $("keyCard").classList.remove("hidden");
+  $("composeCard").classList.add("hidden");
+  hideResults();
+}
+function hideResults(){
+  ["notesCard","reflectionCard","chatCard","composer"].forEach(id=>$(id).classList.add("hidden"));
+}
+function showCompose(){
+  $("keyCard").classList.add("hidden");
+  $("composeCard").classList.remove("hidden");
+}
+
+$("saveKey").onclick = ()=>{
+  const k=sanitizeKey($("keyInput").value);
+  if(!k){$("keyInput").focus();return;}
+  localStorage.setItem(LS_KEY,k);
+  showCompose();
+};
+$("forgetKey").onclick = ()=>{ localStorage.removeItem(LS_KEY); showKey(); };
+$("navKey").onclick = showKey;
+$("navNew").onclick = ()=>{
+  state={mode:state.mode,notes:"",reflection:"",chat:[]};
+  $("narrative").value=""; $("clientLabel").value="";
+  $("notesOut").innerHTML=""; $("reflectionOut").innerHTML=""; $("thread").innerHTML="";
+  hideResults();
+  if(hasKey()) showCompose(); else showKey();
+  window.scrollTo({top:0,behavior:"smooth"});
+};
+
+/* ---------- mode toggle ---------- */
+$("modeSeg").addEventListener("click", e=>{
+  const b=e.target.closest("button"); if(!b)return;
+  state.mode=b.dataset.mode;
+  [...$("modeSeg").children].forEach(x=>x.classList.toggle("on",x===b));
+});
+
+/* ---------- Anthropic call ---------- */
+async function callClaude(system, messages, maxTokens){
+  const res = await fetch("https://api.anthropic.com/v1/messages",{
+    method:"POST",
+    headers:{
+      "content-type":"application/json",
+      "x-api-key":getKey(),
+      "anthropic-version":"2023-06-01",
+      "anthropic-dangerous-direct-browser-access":"true"
+    },
+    body:JSON.stringify({model:MODEL,max_tokens:maxTokens,system,messages})
+  });
+  if(!res.ok){
+    let d=""; try{const j=await res.json(); d=j.error?.message||"";}catch(e){}
+    throw new Error(friendly(res.status,d));
+  }
+  const data=await res.json();
+  return (data.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("").trim();
+}
+function friendly(s,d){
+  if(s===401) return "That API key wasn't accepted. Check it under ‘API key’ above.";
+  if(s===429) return "Rate-limited, or the account is out of credit. Try again shortly.";
+  if(s===400) return "The request was refused"+(d?": "+d:".");
+  if(s>=500) return "Anthropic had a server problem. Try again in a moment.";
+  return "Something went wrong"+(d?": "+d:".");
+}
+
+/* ---------- generate notes ---------- */
+$("genNotes").onclick = async ()=>{
+  const narrative=$("narrative").value.trim();
+  const client=$("clientLabel").value.trim()||"Unknown client";
+  const err=$("composeErr"); err.classList.add("hidden");
+  if(!narrative){ err.textContent="Please write a session narrative first."; err.classList.remove("hidden"); return; }
+
+  const btn=$("genNotes"); btn.disabled=true; const old=btn.textContent; btn.textContent="Generating…";
+  $("notesCard").classList.remove("hidden");
+  $("notesOut").innerHTML='<span class="spin"><span class="dots">structuring your notes</span></span>';
+  // a fresh session resets downstream
+  state.reflection=""; state.chat=[];
+  $("reflectionCard").classList.add("hidden"); $("chatCard").classList.add("hidden"); $("composer").classList.add("hidden");
+
+  const user = `Mode: ${state.mode}
+
+If mode is "Short": return ONLY the Clean Narrative and a brief Gestalt-style SOAP note.
+If mode is "Full": return all five sections.
+
+Client (context only): ${client}
+
+Therapist's raw narrative of the session (informal, possibly messy):
+"""${narrative}"""`;
+
+  try{
+    state.notes = await callClaude(NOTES_SYSTEM,[{role:"user",content:user}],4096);
+    $("notesOut").innerHTML = md(state.notes);
+    $("notesCard").scrollIntoView({behavior:"smooth",block:"start"});
+  }catch(e){
+    $("notesOut").innerHTML=""; err.textContent=e.message; err.classList.remove("hidden");
+  }finally{ btn.disabled=false; btn.textContent=old; }
+};
+
+/* ---------- generate reflection ---------- */
+$("genReflection").onclick = async ()=>{
+  if(!state.notes) return;
+  const narrative=$("narrative").value.trim();
+  const client=$("clientLabel").value.trim()||"Unknown client";
+  const intensity=$("intensity").value;
+  const btn=$("genReflection"); btn.disabled=true; const old=btn.textContent; btn.textContent="Generating…";
+  $("reflectionCard").classList.remove("hidden");
+  $("reflectionOut").innerHTML='<span class="spin"><span class="dots">sensing the field</span></span>';
+  state.chat=[]; $("thread").innerHTML=""; $("chatCard").classList.add("hidden"); $("composer").classList.add("hidden");
+
+  const user = `You are helping the therapist reflect on their clinical work.
+
+Client (context only): ${client}
+
+(1) RAW NARRATIVE
+"""${narrative}"""
+
+(2) STRUCTURED AI NOTES
+"""${state.notes}"""
+
+Reflection depth: ${intensity}
+${INTENSITY[intensity]}
+
+Respond in a supervisor-style reflective tone, grounded in Gestalt field theory.`;
+
+  try{
+    state.reflection = await callClaude(REFLECTION_SYSTEM,[{role:"user",content:user}],4096);
+    $("reflectionOut").innerHTML = md(state.reflection);
+    $("chatCard").classList.remove("hidden");
+    $("composer").classList.remove("hidden");
+    $("reflectionCard").scrollIntoView({behavior:"smooth",block:"start"});
+  }catch(e){
+    $("reflectionOut").innerHTML="";
+    const er=$("composeErr"); er.textContent=e.message; er.classList.remove("hidden");
+  }finally{ btn.disabled=false; btn.textContent=old; }
+};
+
+/* ---------- supervision chat ---------- */
+function renderChat(){
+  $("thread").innerHTML = state.chat.map(m=>{
+    const who=m.role==="user"?"you":"companion";
+    const label=m.role==="user"?"You":"Companion";
+    return `<div class="turn ${who}"><div class="who">${label}</div><div class="bubble">${md(m.content)}</div></div>`;
+  }).join("");
+}
+function chatContext(){
+  const narrative=$("narrative").value.trim();
+  const client=$("clientLabel").value.trim()||"Unknown client";
+  return `Here is the material we are thinking about together.
+
+Client (context only): ${client}
+
+RAW SESSION NARRATIVE:
+"""${narrative}"""
+
+STRUCTURED CLINICAL NOTES:
+"""${state.notes}"""
+
+That is the session. You then offered me the reflection below, and I'd like to keep thinking with you from here — conversationally, a little at a time.`;
+}
+async function sendChat(){
+  const txt=$("chatInput").value.trim();
+  if(!txt) return;
+  $("chatInput").value=""; autosize($("chatInput"));
+  $("chatErr").classList.add("hidden");
+  state.chat.push({role:"user",content:txt});
+  renderChat();
+  state.chat.push({role:"assistant",content:"…"}); // placeholder
+  renderChat();
+  const msgs=[
+    {role:"user",content:chatContext()},
+    {role:"assistant",content:state.reflection||"(reflection)"},
+    ...state.chat.slice(0,-1) // exclude placeholder
+  ];
+  try{
+    const reply=await callClaude(CHAT_SYSTEM,msgs,1500);
+    state.chat[state.chat.length-1]={role:"assistant",content:reply};
+    renderChat();
+    window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+  }catch(e){
+    state.chat.pop(); renderChat();
+    $("chatErr").textContent=e.message; $("chatErr").classList.remove("hidden");
+  }
+}
+$("sendChat").onclick=sendChat;
+$("chatInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendChat();}
+});
+$("chatInput").addEventListener("input",()=>autosize($("chatInput")));
+function autosize(el){el.style.height="auto";el.style.height=Math.min(el.scrollHeight,180)+"px";}
+$("clearChat").onclick=()=>{ state.chat=[]; renderChat(); };
+
+/* ---------- downloads ---------- */
+function dl(name,text){
+  const b=new Blob([text],{type:"text/plain"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(b); a.download=name; a.click();
+  URL.revokeObjectURL(a.href);
+}
+function safeName(){
+  const l=($("clientLabel").value.trim()||"client").replace(/[^a-z0-9 _-]/gi,"").replace(/\s+/g,"_");
+  const t=new Date().toISOString().slice(0,16).replace("T","_").replace(":","-");
+  return `${l||"client"}_${t}`;
+}
+$("dlNotesTxt").onclick=()=>dl(safeName()+"_notes.txt",state.notes);
+$("dlReflTxt").onclick=()=>dl(safeName()+"_reflection.txt",state.reflection);
+$("dlChat").onclick=()=>dl(safeName()+"_supervision_chat.txt",
+  state.chat.map(m=>`${m.role.toUpperCase()}:\n${m.content}`).join("\n\n"));
+$("printBtn").onclick=()=>window.print();
+
+/* ---------- warn before leaving (nothing is saved) ---------- */
+window.addEventListener("beforeunload",e=>{
+  if(state.notes||state.reflection||state.chat.length){e.preventDefault();e.returnValue="";}
+});
+
+/* ---------- boot ---------- */
+if(hasKey()) showCompose(); else showKey();
+</script>
+</body>
+</html>

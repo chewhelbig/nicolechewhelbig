@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Getting set up — FieldNotes</title>
+<style>
+  :root{--bg:#f4f1ec;--panel:#fbf9f5;--ink:#2b2723;--soft:#6a615a;--line:#e3ddd3;
+    --accent:#5f7a6f;--accent-ink:#3f5750;--accent-soft:#e8efe9;--radius:14px;--maxw:720px}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px;line-height:1.65}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  header{padding:30px 0 20px;border-bottom:1px solid var(--line)}
+  h1{font-size:23px;margin:0 0 6px;font-weight:700}
+  h1 .mark{color:var(--accent)}
+  .tagline{color:var(--soft);font-size:15px}
+  main{padding:28px 0 80px}
+  .lead{font-size:18px}
+  p.muted{color:var(--soft)}
+  a{color:var(--accent-ink)}
+  .reassure{background:var(--accent-soft);border-radius:var(--radius);padding:18px 20px;margin:22px 0 30px}
+  .reassure strong{color:var(--accent-ink)}
+  h2{font-size:15px;letter-spacing:.4px;color:var(--soft);text-transform:uppercase;margin:40px 0 16px;font-weight:700}
+  .step{display:flex;gap:18px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px 22px;margin-bottom:16px}
+  .num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-size:16px;
+    display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .step h3{margin:2px 0 6px;font-size:18px}
+  .step p{margin:6px 0}
+  .hint{font-size:14px;color:var(--soft)}
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;border-radius:10px;
+    padding:10px 18px;font-size:15px;margin-top:8px}
+  .btn:hover{background:var(--accent-ink)}
+  .btn.big{padding:14px 26px;font-size:17px}
+  .callout{border-left:3px solid var(--accent);padding:4px 0 4px 16px;margin:10px 0;color:var(--soft);font-size:15px}
+  .pill{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:2px 8px;font-size:14px}
+  .finish{text-align:center;margin:46px 0 0;padding:30px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)}
+  footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--soft);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>📝 Field<span class="mark">Notes</span> — getting set up</h1>
+    <div class="tagline">a few minutes, once — then you never think about it again</div>
+  </header>
+  <main>
+    <p class="lead">FieldNotes runs on Claude, made by a company called Anthropic. To keep your clients' material private, nothing goes through us — it goes straight from your browser to Claude, using one key that belongs only to you.</p>
+
+    <div class="reassure"><strong>Why a key, in plain terms.</strong> Think of it as your own private line to Claude. Because the line is yours, nothing you write about a session passes through us or anyone else. The trade is that you set the line up once. There's nothing to break, and it's free to start.</div>
+
+    <h2>What you'll do</h2>
+    <p class="muted">One key, four short steps: make an account, add a little credit, create the key, paste it in. About five minutes.</p>
+
+    <div class="step"><div class="num">1</div><div>
+      <h3>Make an Anthropic account</h3>
+      <p>Open the Anthropic Console and sign up with your email or a Google account.</p>
+      <a class="btn" href="https://console.anthropic.com/login" target="_blank" rel="noopener">Open the Anthropic Console →</a>
+      <p class="hint">It opens in a new tab, so this page stays here beside you.</p>
+    </div></div>
+
+    <div class="step"><div class="num">2</div><div>
+      <h3>Add a little credit</h3>
+      <p>Your key only works once there's credit on the account. Go to <span class="pill">Settings → Billing</span>, add a card, and put on a small amount — <strong>$5 is plenty</strong> and lasts a long time.</p>
+      <a class="btn" href="https://console.anthropic.com/settings/billing" target="_blank" rel="noopener">Go to Billing →</a>
+      <div class="callout">New accounts are sometimes offered a little free credit to begin with (you may be asked for a phone number). If you see that, you can try it before adding a card.</div>
+    </div></div>
+
+    <div class="step"><div class="num">3</div><div>
+      <h3>Create your key</h3>
+      <p>Go to <span class="pill">Settings → API Keys</span> and choose <em>Create Key</em>. Name it anything — "FieldNotes" works well.</p>
+      <a class="btn" href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">Go to API Keys →</a>
+      <div class="callout"><strong>Important:</strong> Anthropic shows the key only once. Copy it straight away (a long line starting <span class="pill">sk-ant-</span>). If you lose it, no harm — delete it there and make another.</div>
+    </div></div>
+
+    <div class="step"><div class="num">4</div><div>
+      <h3>Paste it into FieldNotes</h3>
+      <p>Come back, open FieldNotes, and paste your key into the box. It's kept only in your own browser, on your own device — never sent to us, and removable any time with one click.</p>
+      <a class="btn" href="index.html">Open FieldNotes →</a>
+    </div></div>
+
+    <h2>The questions people ask</h2>
+    <p><strong>Is this safe?</strong> Your key lives only in your browser. Your sessions are never stored anywhere — close the page and they're gone. The one thing to keep in mind: the words you type are sent to Claude to be read, so write the least that lets you think — a code or initials rather than full names.</p>
+    <p><strong>What does it cost?</strong> You pay Anthropic directly, only for what you use. FieldNotes runs on Claude Opus, the strongest model; a set of notes plus a reflection is usually a few cents, and you can set a monthly spending cap in Billing so it never surprises you.</p>
+    <p><strong>What if I get stuck?</strong> Nothing here can be broken. If a key won't work, it's almost always because credit hasn't been added yet (step 2).</p>
+
+    <div class="finish">
+      <p class="lead" style="margin-top:0">Got your key?</p>
+      <a class="btn big" href="index.html">Open FieldNotes</a>
+    </div>
+  </main>
+  <footer><div class="wrap" style="padding:0">FieldNotes helps you think about your own work — it reflects with you, it doesn't analyse your clients.</div></footer>
+</div>
+</body>
+</html>
