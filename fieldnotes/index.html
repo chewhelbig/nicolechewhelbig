@@ -172,27 +172,27 @@
       </div>
     </section>
 
+    <!-- composer (chat input) — sits above the supervision box -->
+    <div id="composer" class="composer hidden" style="margin:8px 0 16px">
+      <div style="display:flex;gap:10px;align-items:flex-end">
+        <textarea id="chatInput" rows="1" placeholder="e.g. What do you notice about the moment I went quiet?" style="min-height:48px;max-height:180px;background:#fff"></textarea>
+        <button id="sendChat" class="primary">Send</button>
+      </div>
+    </div>
+
     <!-- SUPERVISION CHAT -->
     <section id="chatCard" class="card hidden">
       <h2>🗣️ Supervision conversation</h2>
-      <p class="tiny">Keep thinking with the reflection — ask a question, push back, go deeper. Claude already has the session, the notes, and its first reflection in view. This conversation lives only in this page and is not stored.</p>
+      <p class="tiny">Keep thinking with the reflection — ask a question, push back, go deeper. We already have the session, the notes, and our first reflection in view. This conversation lives only in this page and is not stored.</p>
       <div id="thread" style="margin-top:14px"></div>
       <div id="chatErr" class="errbar hidden"></div>
       <div class="dlrow" id="chatTools">
-        <a href="https://forms.gle/gWRYARui18hRvekP7" target="_blank" rel="noopener" style="background:var(--accent);color:#fff;border-radius:10px;padding:10px 18px;font-size:14px;font-weight:600;text-decoration:none;display:inline-block">Share your reflections →</a>
         <button class="ghost" id="clearChat">Clear conversation</button>
         <button class="ghost" id="dlChat">Download conversation (.txt)</button>
+        <a href="https://forms.gle/gWRYARui18hRvekP7" target="_blank" rel="noopener" style="background:var(--accent);color:#fff;border-radius:10px;padding:10px 18px;font-size:14px;font-weight:600;text-decoration:none;display:inline-block">Share your reflections →</a>
       </div>
     </section>
   </main>
-</div>
-
-<!-- composer -->
-<div id="composer" class="composer hidden" style="position:fixed;bottom:0;left:0;right:0;background:linear-gradient(to top,var(--bg) 72%,transparent);padding:12px 22px 16px">
-  <div class="wrap" style="display:flex;gap:10px;align-items:flex-end;padding:0">
-    <textarea id="chatInput" rows="1" placeholder="e.g. What do you notice about the moment I went quiet?" style="min-height:48px;max-height:180px;background:#fff"></textarea>
-    <button id="sendChat" class="primary">Send</button>
-  </div>
 </div>
 
 <footer>
