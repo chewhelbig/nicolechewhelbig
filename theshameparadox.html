@@ -385,6 +385,62 @@
     .sp-hero { padding: 5.5rem 1.5rem 2.5rem; }
     .sp-explores, .sp-follow { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
+  /* ── Read the opening (sample PDF) ── */
+  .sp-sample {
+    padding: 4rem 2rem;
+  }
+  .sp-sample-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .sp-sample h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: #3A3632;
+    margin-bottom: 0.6rem;
+  }
+  .sp-sample-lede {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #5A4F48;
+    max-width: 560px;
+    margin: 0 auto 2rem;
+  }
+  .sp-sample-frame {
+    width: 100%;
+    height: 80vh;
+    min-height: 560px;
+    max-height: 1000px;
+    border: 1px solid #EBE6E0;
+    background: #FFFFFF;
+    box-shadow: 0 8px 30px rgba(58, 54, 50, 0.08);
+  }
+  .sp-sample-frame object {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .sp-sample-fallback {
+    padding: 3rem 1.5rem;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.95rem;
+    color: #5A4F48;
+  }
+  .sp-sample-actions {
+    margin-top: 1.6rem;
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 720px) {
+    /* Phone browsers show only the first page of an embedded PDF, so offer the file directly */
+    .sp-sample-frame { display: none; }
+    .sp-sample-lede { margin-bottom: 0.4rem; }
+  }
 </style>
 </head>
 <body>
@@ -469,6 +525,25 @@
     <div class="sp-theme-item">Why artificial intelligence can simulate empathy but cannot experience shame — and what that means for being human</div>
     <div class="sp-theme-item">How the emotion we flee from is the one that makes genuine connection possible</div>
     <div class="sp-theme-item">Shame across cultures — from 沒面子 (méi miànzi) to malu — revealing what Western psychology often misses</div>
+  </div>
+</div>
+
+<!-- ═══════ READ THE OPENING (SAMPLE PDF) ═══════ -->
+<div class="sp-sample" id="sample">
+  <div class="sp-sample-inner">
+    <h2>Read the Opening</h2>
+    <p class="sp-sample-lede">The preface, the introduction and the first chapter, &ldquo;Before We Knew We Were Naked&rdquo;. Free to read here or to download.</p>
+
+    <div class="sp-sample-frame">
+      <object data="the-shame-paradox-sample.pdf#view=FitH&amp;pagemode=none" type="application/pdf" aria-label="The Shame Paradox — opening chapters (PDF)">
+        <div class="sp-sample-fallback">Your browser can&rsquo;t show the sample here. <a href="the-shame-paradox-sample.pdf" target="_blank" rel="noopener">Open the PDF</a>.</div>
+      </object>
+    </div>
+
+    <div class="sp-sample-actions">
+      <a href="the-shame-paradox-sample.pdf" target="_blank" rel="noopener" class="btn btn-dark btn-sm">Open the sample</a>
+      <a href="the-shame-paradox-sample.pdf" download="The Shame Paradox - Sample.pdf" class="btn btn-outline btn-sm">Download PDF</a>
+    </div>
   </div>
 </div>
 
